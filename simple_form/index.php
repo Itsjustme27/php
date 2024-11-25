@@ -26,7 +26,7 @@
         $name = htmlspecialchars($_POST['name']);
         echo "<p>Hello, ".$name."!</p>"; 
 
-        $radius = htmlspecialchars($_POST['radius']);
+        $radius = (int) htmlspecialchars($_POST['radius']);
         $areaCircle = pi() * pow($radius, 2);
         echo "The area is " .$areaCircle. ".";
     }
