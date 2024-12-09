@@ -1,49 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roots of Quadratic EQN</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Roots of Quadratic EQN</h1>
+<?php
+    $a = readline("Enter coefficient a: ");
+    $b = readline("Enter coefficient b: ");
+    $c = readline("Enter coefficient c: ");
 
-        <form action="five.php" method="post">
+    $discriminant = pow($b, 2) - 4 * $a * $c;
 
-            <label for="a">Enter coefficient a: </label>
-            <input type="text" name="a" id="a" required><br>
+    if ($discriminant < 0) {
+        echo "No real roots\n";
+    } else {
+        $r1 = (-$b + sqrt($discriminant)) / (2 * $a);
+        $r2 = (-$b - sqrt($discriminant)) / (2 * $a);
 
-            <label for="b">Enter coefficient b: </label>
-            <input type="text" name="b" id="b" required><br>
-
-            <label for="c">Enter coefficient c: </label>
-            <input type="text" name="c" id="c" required><br>
-
-            <input type="submit" value="Submit">
-        </form>
-
-
-
-    </div>
-
-    <?php 
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $a = htmlspecialchars($_POST['a']);
-            $b = htmlspecialchars($_POST['b']);
-            $c = htmlspecialchars($_POST['c']);
-
-            $discriminant = sqrt(pow($b, 2) - 4*$a*$c);
-            if($discriminant < 0) {
-                echo "No real roots";
-            } else {
-                $root1 = (-$b + sqrt($discriminant) / 2 * $a);
-                $root2 = (-$b - sqrt($discriminant) / 2* $a);
-            }
-
-            echo "Root 1: ".$root1." Root 2: ".$root2."\n";
-        }
-    ?>
-</body>
-</html>
+        echo "Root 1: " . $r1 . "\n";
+        echo "Root 2: " . $r2 . "\n";
+    }
+?>
