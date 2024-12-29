@@ -26,15 +26,15 @@
 
     }
 
-    $toyota = new Car("Toyota", 5000000);
+    // $toyota = new Car("Toyota", 5000000);
     // $toyota->setName("Toyota");
     // $toyota->setPrice(50055050);
 
-    $carName = $toyota->getName();
-    $carPrice = $toyota->getPrice();
+    // $carName = $toyota->getName();
+    // $carPrice = $toyota->getPrice();
 
-    echo "Car name: $carName \n";
-    echo "Car price: $carPrice \n";
+    // echo "Car name: $carName \n";
+    // echo "Car price: $carPrice \n";
     // $toyota->name = "Toyota";
     // $toyota->price = 1000000;
 
