@@ -1,9 +1,9 @@
 <?php
 	require './Car.php';
 	class Ford extends Car {
-		public $name;
-		public $price;
-		public $model;
+		private $name;
+		private $price;
+		private $model;
 
 		public function __construct($name, $price, $model) {
 			$this->name = $name;
