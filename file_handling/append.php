@@ -8,4 +8,4 @@ if(file_exists($filename)) {
 } else {
 	echo "Could not append to file";
 }
-?>
+?>xx
