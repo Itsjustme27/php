@@ -1,10 +1,10 @@
 <?php
-$uploadDir = __DIR__ . '/uploads/';
+$uploadDir = 'uploads/';
 
 $allowedTypes = ['jpg', 'jpeg', 'png', 'txt'];
 $maxFileSize = 2 * 1024 * 1024;
 
-if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$file = $_FILES['file'];
 
 	print_r($_FILES['file']);
@@ -15,21 +15,22 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 	$fileExtension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 	if(!in_array($fileExtension, $allowedTypes)) {
-		die("Invalid file type");
+		die("Invalid Type");
 	}
 
+
 	if($file['size'] > $maxFileSize) {
-		die("File too large, Max 2MB allowed");
+		die("File too large. Max 2MB allowed");
 	}
 
 	$safeFileName = uniqid('upload_', true) . '.' . $fileExtension;
 
 	if(!move_uploaded_file($file['tmp_name'], $uploadDir . $safeFileName)) {
-		error_log("Failed to move file: " . print_r($file, true));	
-		die("Error moving uploaded file.");
-	}
-	echo "File uploaded successfully" . htmlspecialchars($safeFileName);
+		die("Error moving uploaded file");
+	} 
+
+	echo "File uploaded successfully: " . htmlspecialchars($safeFileName);	
 } else {
-	echo "No file uploaded.";	
+	echo "No file uploaded";
 }
 ?>
